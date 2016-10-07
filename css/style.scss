@@ -1,0 +1,797 @@
+/* --------------------------------
+    Primary style
+-------------------------------- */
+$bg-color: #103a55;
+
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+*:not(i) {
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    padding: 0;
+    margin: 0;
+    // background: #103a55;
+    background:$bg-color;
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+}
+h1,h1,h3,h4,h5,h6 {
+    margin: 0;
+    line-height: normal;
+}
+p {
+    color: #fff;
+}
+img {
+    max-width: 100%;
+}
+input::-ms-clear, textarea::-ms-clear {
+    display: none;
+}
+.main-container {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.wrapper {
+    display: table-cell;
+    width: 1%;
+    vertical-align: middle;
+    padding:0 20px;
+}
+.user-name {
+    width: 98%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.github-card {
+    width: 100%;
+    margin:0 auto;
+    border-radius: 10px;
+    box-shadow: 0 0 75px rgba(0,0,0,0.6);
+    overflow: hidden;
+    position: relative;
+
+    a.fa-github {
+        position: absolute;
+        font-size: 26px;
+        color: rgba(0,0,0,0.65);
+        z-index: 9;
+    }
+    a.fa-github:hover {
+        color: rgba(0,0,0,1);
+    }
+
+    .user-count-detail:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .user-count-detail li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        float: left;
+        width: 33.33333%; 
+        padding: 10px;
+        color: #03283f;
+        text-align: center;
+    }
+    .user-count-detail li:nth-child(1) {
+        border-top:2px solid #e3553a; 
+    }
+    .user-count-detail li:nth-child(2) {
+        border-top:2px solid #d4c523; 
+        border-left:1px solid #103a55; 
+        border-right:1px solid #103a55; 
+    }
+    .user-count-detail li:nth-child(3) {
+        border-top:2px solid #1fb310; 
+    }
+    .count-text {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: normal;
+        padding: 0;
+        margin-bottom: -6px;
+        text-align: center;
+        display: block;
+    }
+    .small-text {
+        font-size: 10px;
+        text-transform: uppercase;
+        display: block;   
+    }
+
+    // Theme 1
+    &.theme-1 {
+        &.white {
+            &.github-card {
+                background:none ;
+                border-radius: 0px;
+                box-shadow: none;
+                overflow: visible;
+
+                a.fa-github {
+                    top: 146px;
+                    color: #000;
+                }
+
+                .github-user-detail-wrapper {
+                    background:#fff;
+                    box-shadow: 0 0 75px rgba(0,0,0,0.6);
+                    border-radius: 10px;
+                    color: #000;
+
+                    .github-user-detail a {
+                        background:#000;
+                        &:hover {
+                            background:#fff;
+                            border-color:#000;
+                            color: #000;
+                        }
+                    }
+                }
+
+                .repo-wrapper {
+                    border-color:#000;
+
+                    ul.repo-buttons {
+                        li {
+                            background:#000;
+
+                            i {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+
+                .user_image {
+                    border:8px solid $bg-color;
+                    box-shadow: 3px -9px 1px rgba(0,0,0,0.3);
+                }
+                .user-count-detail {
+                    li {
+                        border-color:#000;
+                        color: #000;
+                        border-top:1px solid #000;
+                    }
+
+                }
+            }
+        }
+        &.github-card {
+            padding-top: 20px;
+            background: url(../images/bg-pattern-black.png ) #004775 repeat;
+            max-width: 300px;
+        }
+        a.fa-github {
+            left: 3px;
+            top: 3px;
+        }
+        .user_image {
+            width: 190px;
+            height: 190px;
+            border-radius: 100%;
+            overflow: hidden;
+            margin: 10px auto -75px;
+            background: #023f67;
+            position: relative;
+            z-index: 99;
+        }
+        .github-user-detail-wrapper {
+            background: #08639d;
+            text-align: center;
+            padding-top: 80px;
+            color: #fff;
+            box-shadow: 0 -7px 30px rgba(0,0,0,0.5);
+
+            .github-user-detail h1.user-name {
+                font-weight: normal;
+                display: block;
+                line-height: 28px;
+                font-size: 30px;
+            }
+            .github-user-detail .user-destination {
+                display: block;
+                margin-bottom: 8px;
+            }
+            .github-user-detail a {
+                border:1px solid #fff;
+                text-decoration: none;
+                padding: 3px 10px;
+                margin:5px;
+                display: inline-block; 
+                font-weight: normal;
+            }
+            .github-user-detail a:hover {
+                background: #fff;
+                color: #03283f;
+            }
+            .repo-wrapper {
+                    margin-top: 10px;
+                    border-top:1px solid #fff; 
+                    padding-top:10px;
+            }
+        }
+
+        .user-count-detail {
+            width: 100%;
+            display: block;
+            clear: both;
+            margin:0;
+            padding: 0;
+            margin-top: 30px;
+        }
+    }
+
+    // Theme 2
+    &.theme-2 {
+        &.repo-active {
+            .user_image {
+                height: 263px;
+
+                img {
+                    max-width: inherit;
+                    max-height: 100%;
+                }
+            }
+        }
+        &.white {
+            &.github-card {
+                background:#fff;
+                a.fa-github {
+                    color: #000;
+                }
+                .github-user-detail-wrapper {
+                    background:none;
+                    color: #000;
+                    .github-user-detail a {
+                        background:#000;
+
+                        &:hover {
+                            background:#fff;
+                            border-color:#000;
+                            color: #000;
+
+                        }
+                    }
+                }
+
+                .repo-wrapper {
+                    border-color:#000;
+
+                    ul.repo-buttons {
+                        li {
+                            background:#000;
+
+                            i {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+                .user-count-detail {
+                    li {
+                        border-color:#000;
+                        color: #000;
+                        border-top:1px solid #000;
+                    }
+
+                }
+            }
+        }
+
+        &.github-card {
+            padding-top: 0px;
+            background:#08639d ;
+            max-width: 525px;
+            padding:4px;
+        }
+        a.fa-github {
+            right: 3px;
+            top: 3px;
+        }
+        .user_image {
+            width: 190px;
+            height: 190px;
+            overflow: hidden;
+            background: #023f67;
+            position: relative;
+            z-index: 99;
+            float: left;
+            border-radius:6px 0 0 6px;
+        }
+        .github-user-detail-wrapper {
+            text-align: left;
+            padding-top: 10px;
+            color: #fff;
+            float: left;
+            width: 100%;
+            padding-left: 210px;
+            margin-left: -190px;
+            
+            .github-user-detail h1.user-name {
+                font-weight: normal;
+                display: block;
+                line-height: 28px;
+                font-size: 30px;
+            }
+            .github-user-detail .user-destination {
+                display: block;
+                margin-bottom: 8px;
+            }
+            .github-user-detail a {
+                border:1px solid #fff;
+                text-decoration: none;
+                padding: 3px 10px;
+                margin:5px;
+                display: inline-block; 
+            }
+            .github-user-detail a:hover {
+                background: #fff;
+                color: #03283f;
+            }
+
+            .reponame,
+            ul.repo-buttons {
+                padding: 0 5px;
+            }
+        }
+
+        .user-count-detail {   
+            display: block;
+            clear: both;
+            margin: 15px -4px -4px -20px;
+            padding: 0;
+        }
+    }
+
+
+    .repo-wrapper {
+        clear:both;
+        text-align: left;
+
+        .reponame {
+            padding: 0 15px;
+            margin-bottom: 10px;
+
+            label {
+                display: block;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            span {
+                width: 100%;
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-size: 15px;
+            }
+        }
+        ul.repo-buttons {
+            list-style: none;
+            padding: 0 15px;
+
+            li {
+                background:#fff;
+                float: left;
+                width: 18%;
+                margin-bottom: 11px;
+                // overflow: hidden;
+                padding: 0px;
+                margin: 0 1% 10px;
+                border-radius: 6px;
+                position: relative;
+                padding: 4px;
+                height: 28px;
+                text-align: center;
+                font-size: 21px;
+                line-height: 21px;
+                position: relative;
+                &:hover {
+                    &:after,
+                    &:before {
+                        display: block;
+                    }
+                }
+
+                &:after {
+                    display: none;
+                    content: attr(data-content);
+                    float: left;
+                    font-size: 12px;
+                    position: absolute;
+                    left: 0;
+                    bottom: 130%;
+                    background: #000;
+                    color: #fff;
+                    text-align: center;
+                    width: 150px;
+                    margin-left: -75px;
+                    left: 50%;
+                    padding: 10px 20px;
+                    border-radius:6px;
+                    word-wrap: break-word;
+                }
+                &:before {
+                    display: none;
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid #000;
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -10px;
+                    bottom: 100%;
+
+                }
+
+                i {
+                    color: #000;
+                }
+                iframe {
+                    opacity: 0;
+                    display: block;
+                    position: absolute;
+                    width: 100% !important;
+                    height: 100% !important;
+                    left: 0;
+                    top: 0;
+                    z-index: 9;
+                }
+            }
+        }
+    }
+    // Theme 3 == repo-style
+    &.theme-3 {
+        &.white {
+            &.github-card {
+                background:none ;
+                border-radius: 0px;
+                box-shadow: none;
+                overflow: visible;
+
+                a.fa-github {
+                    top: 100px;
+                    color: #000;
+                    left: 4px;
+                }
+                .user-name,
+                .user-destination {
+                    color: #fff;
+                }
+
+
+                .github-user-detail-wrapper {
+                    background:#fff;
+                    box-shadow: 0 0 75px rgba(0,0,0,0.6);
+                    border-radius: 10px;
+                    color: #000;
+
+                    .github-user-detail a {
+                        background:#000;
+                        &:hover {
+                            background:#fff;
+                            border-color:#000;
+                            color: #000;
+
+                        }
+                    }
+
+                }
+
+                ul.repo-buttons {
+
+                    li {
+                        background:#000;
+                        i {
+
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .user_image {
+                    border:8px solid $bg-color;
+                    box-shadow: 3px -9px 1px rgba(0,0,0,0.3);
+                }
+                .user-count-detail {
+                    li {
+                        border-color:#000;
+                        color: #000;
+                        border-top:1px solid #000;
+                    }
+
+                }
+            }
+        }
+        &.github-card {
+            padding-top: 10px;
+            background: url(../images/bg-pattern-black.png ) #004775 repeat;
+            max-width: 300px;
+        }
+        a.fa-github {
+            right: 3px;
+            top: 3px;
+        }
+        .user_image {
+            width: 110px;
+            height: 110px;
+            overflow: hidden;
+            background: #023f67;
+            position: relative;
+            z-index: 99;
+            border-radius:100%;
+            margin-left: 10px;
+            margin-bottom: -40px;
+        }
+        .github-user-detail-wrapper {
+            background: #08639d;
+            text-align: left;
+            padding-top: 10px;
+            color: #fff;
+            width: 100%;
+
+
+            .github-user-detail {
+                float: left;
+                padding-left: 130px;
+                margin-top: -60px;
+            }
+
+            .github-user-detail h1.user-name {
+                font-weight: normal;
+                display: block;
+                line-height: 18px;
+                font-size: 20px;
+            }
+            .github-user-detail .user-destination {
+                display: block;
+                margin-bottom: 8px;
+                font-size: 13px;
+            }
+            .github-user-detail a {
+                border:1px solid #fff;
+                text-decoration: none;
+                padding: 3px 10px;
+                margin:15px 5px;
+                display: inline-block; 
+                font-size: 12px;
+            }
+            .github-user-detail a:hover {
+                background: #fff;
+                color: #03283f;
+            }
+        }
+
+        .user-count-detail {
+            display: block;
+            clear: both;
+            margin: 0;
+            padding: 0;
+        }
+
+    }
+}
+
+
+//  Response 
+
+
+@media only screen and (max-width: 480px) {
+    .github-card {
+        &.theme-2 {
+            a.fa-github {
+                right: 8px;
+                top: 8px;
+                z-index: 999;
+            }
+            .user_image {
+                width: 100%;
+                border-radius: 6px 6px 0 0 !important;
+
+                img {
+                    max-width: 100% !important;
+                    max-height: inherit !important;
+                }
+            }
+            .github-user-detail-wrapper {
+                width: 100%;
+                margin: 0;
+                padding: 20px 20px 0;
+
+                .user-count-detail {
+                    margin: 15px -24px -4px -23px;
+                }
+            }
+        }
+
+        &.theme-3 {
+            &.white {
+                 a.fa-github {
+                    top: 146px !important;
+                    color: #000 !important;
+                }
+            }
+            &.github-card {
+                padding-top: 20px;
+                background: url(../images/bg-pattern-black.png ) #004775 repeat;
+                max-width: 300px;
+            }
+            a.fa-github {
+                left: 3px;
+                top: 3px;
+            }
+            .user_image {
+                width: 190px;
+                height: 190px;
+                border-radius: 100%;
+                overflow: hidden;
+                margin: 10px auto -75px;
+                background: #023f67;
+                position: relative;
+                z-index: 99;
+            }
+            .github-user-detail-wrapper {
+                background: #08639d;
+                text-align: center;
+                padding-top: 80px;
+                color: #fff;
+                box-shadow: 0 -7px 30px rgba(0,0,0,0.5);
+                
+                .github-user-detail  {
+                    margin-top: 0;
+                    padding-left:0;
+                    float: none;
+
+                    h1.user-name {
+                        font-weight: normal;
+                        display: block;
+                        line-height: 28px;
+                        font-size: 30px;
+                        color: #000;
+                    }
+                    .user-destination {
+                        font-size: 14px;
+                        color: #000;
+                    }
+                    a {
+                        font-size: 14px;
+                        
+                        &:hover {
+                            background: #fff;
+                            color: #03283f;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+
+.spinner {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100px;
+  height: 20px;
+  border-radius: 0;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        left: 0;
+        border-radius: 100%;
+        -webkit-animation: shadowSize 2s ease-in infinite;
+        animation: shadowSize 2s ease-in infinite;
+        color: #fff;
+    }
+}
+
+@-webkit-keyframes size {
+  from {
+    width: 70px;
+    height: 70px;
+  }
+  to {
+    width: 30px;
+    height: 30px;
+  }
+}
+@keyframes size {
+  from {
+    width: 70px;
+    height: 70px;
+  }
+  to {
+    width: 30px;
+    height: 30px;
+  }
+}
+@-webkit-keyframes shadow {
+  from {
+    box-shadow: 0px 0 0 1px inset;
+  }
+  to {
+    box-shadow: 50px 0 0 1px inset;
+  }
+}
+@keyframes shadow {
+  from {
+    box-shadow: 0px 0 0 1px inset;
+  }
+  to {
+    box-shadow: 50px 0 0 1px inset;
+  }
+}
+@keyframes shadowSize {
+  0% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 0;
+  }
+  20% {
+    box-shadow: 15px 0 0 5px, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 0;
+  }
+  40% {
+    box-shadow: 15px 0 0 0, 30px 0 0 5px, 45px 0 0 0, 60px 0 0 0, 75px 0 0 0;
+  }
+  60% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 5px, 60px 0 0 0, 75px 0 0 0;
+  }
+  80% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 5px, 75px 0 0 0;
+  }
+  100% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 5px;
+  }
+}
+
+@-webkit-keyframes shadowSize {
+  0% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 0;
+  }
+  20% {
+    box-shadow: 15px 0 0 5px, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 0;
+  }
+  40% {
+    box-shadow: 15px 0 0 0, 30px 0 0 5px, 45px 0 0 0, 60px 0 0 0, 75px 0 0 0;
+  }
+  60% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 5px, 60px 0 0 0, 75px 0 0 0;
+  }
+  80% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 5px, 75px 0 0 0;
+  }
+  100% {
+    box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 5px;
+  }
+}
+

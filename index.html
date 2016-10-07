@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Google Font === font-family: 'Titillium Web', sans-serif; -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+		<!-- Font Awesome Style-Sheet -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+		<!-- Rest Css -->
+		<!-- <link rel="stylesheet" href="css/reset.css"> -->
+		<!-- Main Style Sheet -->
+		<link rel="stylesheet" href="css/style.css">
+		<!-- Animate.Css -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		<!-- Modernizr.Js -->
+		<script src="js/modernizr.js"></script>
+	  	
+		<title>GitHub Card</title>
+	</head>
+	<body>
+		
+  		<div class="spinner"></div>
+		<div class="main-container">
+			<div class="wrapper">
+				<div class="newCard"></div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!-- Main JS File -->
+		<script src="js/main.js"></script>
+		<!-- Place this tag in your head or just before your close body tag. -->
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+		<script type="text/javascript">
+			$('.newCard').gitHubCard({
+				username: 'JakeWharton',
+				style: 'theme-1 white',
+				repo: 'jakewharton.com'
+			});
+		</script>
+	</body>
+</html>
