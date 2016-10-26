@@ -30,6 +30,26 @@
 					<input type="text" id="gituser" value="" placeholder="Git Username">
 					<span>/</span>
 					<input type="text" id="gitrepo" value="" placeholder="Git Repo">
+
+					<br>
+					<label>Select Theme Style:</label> 
+					<label>
+						<input type="radio" name="themeStyle" value="theme-1" checked=""> Theme 1 
+					</label>
+					<label>
+						<input type="radio" name="themeStyle" value="theme-2"> Theme 2
+					</label>
+					<label>
+						<input type="radio" name="themeStyle" value="theme-3"> Theme 3
+					</label>
+					<br>
+					<label>Select Color Style:</label>
+					<label>
+						<input type="radio" name="themeColor" value="blue" checked=""> Blue (Default)
+					</label>
+					<label>
+						<input type="radio" name="themeColor" value="white"> White
+					</label>
 				</div>
 			</div>
 		</div>
@@ -37,28 +57,41 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<!-- Main JS File -->
 		<script src="js/main.js"></script>
-		<!-- Place this tag in your head or just before your close body tag. -->
-		<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 		<script type="text/javascript">
-			runPlugin('iamsalmanafzal','login-signup-form-with-ajax-submission');
-			
+			runPlugin('iamsalmanafzal','GitHub-Card');
+
 			var gituser = ''
 			var gitrepo = ''
 			$('#gituser').change(function () {
+				var Classes = $('[name="themeStyle"]:checked').val() +' '+ $('[name="themeColor"]:checked').val() 
 				gituser = $(this).val()
-				runPlugin(gituser, gitrepo)
+				runPlugin(gituser, gitrepo, Classes)
 			});
 
 			$('#gitrepo').change(function () {
+				var Classes = $('[name="themeStyle"]:checked').val() +' '+ $('[name="themeColor"]:checked').val() 
 				gitrepo = $(this).val()
-				runPlugin(gituser,gitrepo)
+				runPlugin(gituser,gitrepo, Classes)
 			});
+			$('[name="themeStyle"]').change(function() {
+				var themeStyle = $(this).val()
+				$('.github-card').removeClass('theme-1');
+				$('.github-card').removeClass('theme-2');
+				$('.github-card').removeClass('theme-3');
+				$('.github-card').addClass(themeStyle)
+			})
+			$('[name="themeColor"]').change(function() {
+				var themeColor = $(this).val()
+				$('.github-card').removeClass('white');
+				$('.github-card').removeClass('blue');
+				$('.github-card').addClass(themeColor)
+			})
 
 			function runPlugin(username, repo, style) {
 				$('.newCard').gitHubCard({
 					username: (username ? username: 'iamsalmanafzal') +'',
-					style: (style ? style: 'theme-3')+ '',
+					style: (style ? style: 'theme-1')+ '',
 					repo: (repo ? repo: '')+''
 				});
 			}

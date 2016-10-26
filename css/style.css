@@ -46,7 +46,7 @@ input::-ms-clear, textarea::-ms-clear {
   display: table-cell;
   width: 1%;
   vertical-align: middle;
-  padding: 0 20px; }
+  padding: 20px 20px; }
 
 .user-name {
   width: 98%;
@@ -304,6 +304,15 @@ input::-ms-clear, textarea::-ms-clear {
         position: relative; }
         .github-card .repo-wrapper ul.repo-buttons li:hover:after, .github-card .repo-wrapper ul.repo-buttons li:hover:before {
           display: block; }
+        .github-card .repo-wrapper ul.repo-buttons li a {
+          font-size: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 999;
+          cursor: pointer; }
         .github-card .repo-wrapper ul.repo-buttons li:after {
           display: none;
           content: attr(data-content);
@@ -537,7 +546,8 @@ input::-ms-clear, textarea::-ms-clear {
 .InputFields {
   padding: 60px 0;
   margin: 0;
-  text-align: center; }
+  text-align: center;
+  color: #fff; }
   .InputFields span {
     font-size: 50px;
     color: #fff;
@@ -546,7 +556,7 @@ input::-ms-clear, textarea::-ms-clear {
     display: inline-block;
     vertical-align: middle;
     padding: 0 10px; }
-  .InputFields input {
+  .InputFields input[type="text"] {
     padding: 5px 10px;
     border-radius: 10px;
     height: 50px;
@@ -557,6 +567,12 @@ input::-ms-clear, textarea::-ms-clear {
     outline: none;
     font-size: 18px;
     font-weight: bold;
-    color: #333; }
+    color: #333;
+    margin-bottom: 10px; }
+
+.errorMessage {
+  width: 100%;
+  text-align: center;
+  color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

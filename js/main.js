@@ -9,9 +9,8 @@
 	});
 
     $.fn.gitHubCard = function( options ) {
-    	console.log('here');
+    	var $this = $(this)
 		$('.spinner').show();
-
         // Establish our default settings
         var settings = $.extend({
         	username	 : null,
@@ -19,8 +18,9 @@
         	style 		 : 'theme-1'
         }, options);
 
+		$this.html('');
+
         return this.each( function() {
-        	var $this = $(this)
         	if ( settings.username ) {
         		var url = 'https://api.github.com/users/'+settings.username
         		var reponame = null
@@ -28,7 +28,7 @@
         			type:'GET',
         			url:url,
         			success: function(response) {
-		        		$this.html('');
+        				var owner = response;
 		        		$this.html('<div style="display:none" class="github-card  '+settings.style+' '+(settings.repo ? 'repo-active': '')+'"><a href="https://github.com/'+settings.username+'"  class="fa fa-github" target="_blank"></a></div>')
         				if(settings.repo) {
         					$.ajax({
@@ -45,10 +45,9 @@
 	        								'<li data-content="Watch '+settings.username+'/'+settings.repo+' on GitHub"><i class="fa fa-eye" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'/'+settings.repo+'" data-icon="octicon-eye" data-style="mega" aria-label="Watch '+settings.username+'/'+settings.repo+' on GitHub">Watch</a></li>' +
 	        								'<li data-content="Star '+settings.username+'/'+settings.repo+' on GitHub"><i class="fa fa-star" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'/'+settings.repo+'" data-icon="octicon-star" data-style="mega" aria-label="Star '+settings.username+'/'+settings.repo+' on GitHub">Star</a></li>'+
 	        								'<li data-content="Fork '+settings.username+'/'+settings.repo+' on GitHub"><i class="fa fa-code-fork" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'/'+settings.repo+'/fork" data-icon="octicon-repo-forked" data-style="mega" aria-label="Fork '+settings.username+'/'+settings.repo+' on GitHub">Fork</a></li>'+
-	        								'<li data-content="Follow '+settings.username+' on GitHub"><i class="fa fa-github" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'" data-style="mega" aria-label="Follow @'+settings.username+' on GitHub">Follow @'+settings.username+'</a></li>'+
+	        								'<li data-content="Follow '+settings.username+' on GitHub"><i class="fa fa-github" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'" data-style="mega" aria-label="Follow @'+owner.name+' on GitHub">Follow @'+owner.name+'</a></li>'+
         								'</ul>'
         							)
-        							$('body').append('<script async defer src="https://buttons.github.io/buttons.js"></script>');
         							$('.user-count-detail').remove();
         							$('.repo-wrapper').append(
         								'<ul class="user-count-detail"> '+
@@ -66,10 +65,16 @@
 											'</li>'+
 										'</ul>'
         							)
+        						},
+        						error: function(error) {
+        							if(error.status == '404') {
+        								$('.repo-wrapper').html('<div class="errorMessage"><h1>'+error.status+'</h1><h3>Repo '+error.statusText+'</h3></div>')
+        							}else {
+        								$('.repo-wrapper').html('<div class="errorMessage"><h1>'+error.status+'</h1><h3>'+error.statusText+'</h3></div>')
+        							}
         						}
         					})
         				}
-        				var owner = response
 	        			$this.find('.github-card').append(
 	        				'<div class="user_image"><img src="'+owner.avatar_url+'" ></div>'+
 	        				'<div class="github-user-detail-wrapper">'+
@@ -103,6 +108,7 @@
         			},
         			error: function (error) {
 						$('.spinner').hide().animateCss('zoomOut');
+						$this.html('<div class="errorMessage"><h1>'+error.status+'</h1><h3>'+error.statusText+'</h3></div>')
         			}
 
         		})
