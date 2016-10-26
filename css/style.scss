@@ -64,8 +64,13 @@ input::-ms-clear, textarea::-ms-clear {
     margin:0 auto;
     border-radius: 10px;
     box-shadow: 0 0 75px rgba(0,0,0,0.6);
-    overflow: hidden;
     position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 
     a.fa-github {
         position: absolute;
@@ -117,7 +122,9 @@ input::-ms-clear, textarea::-ms-clear {
         text-transform: uppercase;
         display: block;   
     }
-
+    .github-user-detail-wrapper { 
+        border-radius:0 0 10px 10px;
+    }
     // Theme 1
     &.theme-1 {
         &.white {
@@ -430,6 +437,7 @@ input::-ms-clear, textarea::-ms-clear {
                     padding: 10px 20px;
                     border-radius:6px;
                     word-wrap: break-word;
+                    z-index: 9999;
                 }
                 &:before {
                     display: none;
@@ -443,6 +451,7 @@ input::-ms-clear, textarea::-ms-clear {
                     left: 50%;
                     margin-left: -10px;
                     bottom: 100%;
+                    z-index: 9999;
 
                 }
 
@@ -693,27 +702,19 @@ input::-ms-clear, textarea::-ms-clear {
 
 
 .spinner {
-  margin: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100px;
-  height: 20px;
-  border-radius: 0;
+    text-align: center;
     
     &:before {
         content: '';
         position: absolute;
-        width: 10px;
-        height: 10px;
-        left: 0;
+        width: 8px;
+        height: 8px;
+        left: 50%;
         border-radius: 100%;
         -webkit-animation: shadowSize 2s ease-in infinite;
         animation: shadowSize 2s ease-in infinite;
         color: #fff;
+        margin-left: -50px;
     }
 }
 
@@ -793,5 +794,35 @@ input::-ms-clear, textarea::-ms-clear {
   100% {
     box-shadow: 15px 0 0 0, 30px 0 0 0, 45px 0 0 0, 60px 0 0 0, 75px 0 0 5px;
   }
+}
+
+// Styling for Input Fields
+.InputFields {
+    padding:60px 0;
+    margin:0;
+    text-align: center;
+
+    span {
+        font-size: 50px;
+        color: #fff;
+        font-weight: bold;
+        line-height: 48px;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 10px;
+    }
+    input {
+        padding: 5px 10px;
+        border-radius: 10px;
+        height: 50px;
+        line-height: 50px;
+        width: 260px;
+        display: inline-block;
+        vertical-align: top;
+        outline: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
 }
 

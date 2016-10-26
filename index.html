@@ -21,13 +21,19 @@
 	</head>
 	<body>
 		
-  		<div class="spinner"></div>
 		<div class="main-container">
-			<div class="wrapper">
+			<div class="wrapper" >
+  				<div class="spinner"></div>
 				<div class="newCard"></div>
+
+				<div class="InputFields">
+					<input type="text" id="gituser" value="" placeholder="Git Username">
+					<span>/</span>
+					<input type="text" id="gitrepo" value="" placeholder="Git Repo">
+				</div>
 			</div>
 		</div>
-
+	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<!-- Main JS File -->
 		<script src="js/main.js"></script>
@@ -35,11 +41,27 @@
 		<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 		<script type="text/javascript">
-			$('.newCard').gitHubCard({
-				username: 'JakeWharton',
-				style: 'theme-1 white',
-				repo: 'jakewharton.com'
+			runPlugin('iamsalmanafzal','login-signup-form-with-ajax-submission');
+			
+			var gituser = ''
+			var gitrepo = ''
+			$('#gituser').change(function () {
+				gituser = $(this).val()
+				runPlugin(gituser, gitrepo)
 			});
+
+			$('#gitrepo').change(function () {
+				gitrepo = $(this).val()
+				runPlugin(gituser,gitrepo)
+			});
+
+			function runPlugin(username, repo, style) {
+				$('.newCard').gitHubCard({
+					username: (username ? username: 'iamsalmanafzal') +'',
+					style: (style ? style: 'theme-3')+ '',
+					repo: (repo ? repo: '')+''
+				});
+			}
 		</script>
 	</body>
 </html>

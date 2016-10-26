@@ -10,6 +10,7 @@
 
     $.fn.gitHubCard = function( options ) {
     	console.log('here');
+		$('.spinner').show();
 
         // Establish our default settings
         var settings = $.extend({
@@ -27,7 +28,8 @@
         			type:'GET',
         			url:url,
         			success: function(response) {
-		        		$this.append('<div style="display:none" class="github-card  '+settings.style+' '+(settings.repo ? 'repo-active': '')+'"><a href="https://github.com/'+settings.username+'"  class="fa fa-github" target="_blank"></a></div>')
+		        		$this.html('');
+		        		$this.html('<div style="display:none" class="github-card  '+settings.style+' '+(settings.repo ? 'repo-active': '')+'"><a href="https://github.com/'+settings.username+'"  class="fa fa-github" target="_blank"></a></div>')
         				if(settings.repo) {
         					$.ajax({
         						type:'GET',
@@ -43,7 +45,7 @@
 	        								'<li data-content="Watch '+settings.username+'/'+settings.repo+' on GitHub"><i class="fa fa-eye" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'/'+settings.repo+'" data-icon="octicon-eye" data-style="mega" aria-label="Watch '+settings.username+'/'+settings.repo+' on GitHub">Watch</a></li>' +
 	        								'<li data-content="Star '+settings.username+'/'+settings.repo+' on GitHub"><i class="fa fa-star" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'/'+settings.repo+'" data-icon="octicon-star" data-style="mega" aria-label="Star '+settings.username+'/'+settings.repo+' on GitHub">Star</a></li>'+
 	        								'<li data-content="Fork '+settings.username+'/'+settings.repo+' on GitHub"><i class="fa fa-code-fork" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'/'+settings.repo+'/fork" data-icon="octicon-repo-forked" data-style="mega" aria-label="Fork '+settings.username+'/'+settings.repo+' on GitHub">Fork</a></li>'+
-	        								'<li data-content="Fork '+settings.username+' on GitHub"><i class="fa fa-github" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'" data-style="mega" aria-label="Follow @'+settings.username+' on GitHub">Follow @'+settings.username+'</a></li>'+
+	        								'<li data-content="Follow '+settings.username+' on GitHub"><i class="fa fa-github" aria-hidden="true"></i><a class="github-button" href="https://github.com/'+settings.username+'" data-style="mega" aria-label="Follow @'+settings.username+' on GitHub">Follow @'+settings.username+'</a></li>'+
         								'</ul>'
         							)
         							$('body').append('<script async defer src="https://buttons.github.io/buttons.js"></script>');
@@ -95,9 +97,12 @@
 							'</div>'
 						)
         				setTimeout(function() {
-        						$('.spinner').animateCss('zoomOut');
-        						$('.github-card').show().animateCss('flipInY');
+    						$('.spinner').hide().animateCss('zoomOut');
+    						$('.github-card').show().animateCss('flipInY');
         				},2000)
+        			},
+        			error: function (error) {
+						$('.spinner').hide().animateCss('zoomOut');
         			}
 
         		})
